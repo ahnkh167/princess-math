@@ -1,1 +1,564 @@
-<!DOCTYPE html><html><body>test</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👸 Princess Math for Rayna Ahn</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p1:#FFF0F6;--p2:#FFE0EE;--p3:#FFB8D4;--p4:#FF7EB3;--p5:#FF4D94;--p6:#E6186E;
+  --gold:#F5A623;--gold3:#FFF3C4;
+  --bg:#FFF5F9;--card:rgba(255,255,255,0.72);
+  --shadow:0 6px 28px rgba(230,24,110,0.1);
+  --text:#7A1B4A;--textM:#D4789B;--radius:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:radial-gradient(ellipse at 20% 50%,rgba(255,126,179,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(255,184,212,.12) 0%,transparent 50%);min-height:100vh;color:var(--text);overflow-x:hidden;}
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.ht{position:absolute;opacity:.12;animation:htf var(--d) ease-in-out infinite alternate;}
+@keyframes htf{0%{transform:translateY(0) rotate(0);}100%{transform:translateY(-25px) rotate(12deg);}}
+.app{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:14px;min-height:100vh;}
+.hdr{text-align:center;padding:14px 0 6px;}
+.hdr h1{font-family:'Sacramento',cursive;font-size:clamp(2.4rem,7vw,4rem);color:var(--p5);text-shadow:0 2px 12px rgba(255,77,148,.18);}
+.hdr p{font-size:.88rem;color:var(--textM);letter-spacing:.5px;}
+.scr{display:none;animation:su .45s ease-out;}.scr.on{display:block;}
+@keyframes su{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.glass{background:var(--card);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.8);border-radius:var(--radius);box-shadow:var(--shadow);}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+/* HOME */
+.home-stage{width:220px;margin:12px auto;animation:bob 3s ease-in-out infinite;}
+.btn-go{display:block;margin:16px auto;padding:16px 52px;font-family:inherit;font-size:1.35rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--p4),var(--p5));border:none;border-radius:50px;cursor:pointer;box-shadow:0 8px 28px rgba(255,77,148,.35);transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;}
+.btn-go::after{content:'';position:absolute;inset:-50%;background:linear-gradient(45deg,transparent,rgba(255,255,255,.18),transparent);animation:shm 3s infinite;}
+@keyframes shm{0%{transform:translateX(-100%) rotate(45deg);}100%{transform:translateX(100%) rotate(45deg);}}
+.btn-go:hover{transform:translateY(-4px) scale(1.04);}
+.btn-go:active{transform:scale(.97);}
+.stats-row{display:flex;justify-content:center;gap:16px;margin:14px 0;flex-wrap:wrap;}
+.stat{text-align:center;padding:10px 22px;border-radius:16px;}
+.stat .n{font-size:1.5rem;font-weight:700;color:var(--p5);}
+.stat .l{font-size:.7rem;color:var(--textM);text-transform:uppercase;letter-spacing:.8px;}
+.btn-cl{display:block;margin:4px auto;padding:10px 26px;font-family:inherit;font-size:.95rem;font-weight:600;color:var(--p5);background:var(--p1);border:1.5px solid var(--p3);border-radius:14px;cursor:pointer;transition:all .2s;}
+.btn-cl:hover{background:var(--p2);}
+
+/* GAME */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+.bk{background:none;border:1.5px solid var(--p3);color:var(--p5);border-radius:12px;padding:6px 14px;font-family:inherit;font-size:.88rem;cursor:pointer;font-weight:600;transition:all .2s;}
+.bk:hover{background:var(--p1);}
+.dots{display:flex;gap:4px;align-items:center;}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--p3);font-size:.6rem;font-weight:700;color:var(--textM);display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.dot.ok{background:#86EFAC;border-color:#86EFAC;color:#fff;}
+.dot.no{background:var(--p4);border-color:var(--p4);color:#fff;}
+.dot.now{border-color:var(--p5);color:var(--p5);transform:scale(1.25);box-shadow:0 0 10px rgba(255,77,148,.25);}
+.pill{background:linear-gradient(135deg,var(--gold3),var(--gold));border-radius:20px;padding:5px 16px;font-weight:700;font-size:.95rem;color:#92400E;}
+.prob{padding:26px 16px;margin:10px 0;text-align:center;position:relative;overflow:hidden;}
+.prob::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;background:linear-gradient(90deg,var(--p3),var(--p5),var(--p4));}
+.ptxt{font-size:clamp(2.6rem,9vw,4.4rem);font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;}
+.ptxt .a{color:var(--p6);}.ptxt .x{color:var(--p4);font-size:.78em;}.ptxt .b{color:var(--p5);}.ptxt .e{color:var(--gold);}
+.ptxt .r{color:var(--p6);min-width:52px;display:inline-block;border-bottom:3.5px dashed var(--p4);padding-bottom:2px;}
+.ptxt .r.has{border-bottom-style:solid;border-color:var(--p5);}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:310px;margin:10px auto;}
+.nb{background:#fff;border:2px solid var(--p2);border-radius:14px;padding:13px;font-family:inherit;font-size:1.7rem;font-weight:700;color:var(--text);cursor:pointer;transition:all .14s cubic-bezier(.34,1.56,.64,1);user-select:none;-webkit-user-select:none;touch-action:manipulation;}
+.nb:hover{background:var(--p1);transform:scale(1.06);}.nb:active{transform:scale(.91);background:var(--p4);color:#fff;}
+.nb.dl{color:var(--p4);border-color:rgba(255,126,179,.25);font-size:1.2rem;}
+.nb.go{color:#10B981;border-color:rgba(16,185,129,.25);font-size:1.2rem;}
+
+/* FEEDBACK */
+.fbov{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:100;pointer-events:none;}
+.fbov.on{display:flex;}.fbx{text-align:center;animation:fp .55s cubic-bezier(.34,1.56,.64,1);}
+@keyframes fp{0%{opacity:0;transform:scale(.25);}60%{transform:scale(1.1);}100%{opacity:1;transform:scale(1);}}
+.fbe{font-size:4.5rem;}.fbt{font-size:1.8rem;font-weight:700;margin-top:6px;}
+.fbt.cg{color:var(--p5);}.fbt.wg{color:var(--p4);}.fba{font-size:1rem;color:var(--textM);margin-top:4px;}
+
+/* REWARD / CLOSET */
+.rw-t{font-family:'Sacramento',cursive;font-size:clamp(2rem,5vw,3rem);color:var(--p5);margin:10px 0 2px;text-align:center;}
+.rw-s{color:var(--textM);font-size:.92rem;text-align:center;margin-bottom:10px;}
+.rw-b{display:inline-block;background:linear-gradient(135deg,var(--gold3),var(--gold));border-radius:18px;padding:6px 22px;font-weight:700;font-size:1.1rem;color:#92400E;margin-bottom:14px;}
+.rw-g{display:grid;grid-template-columns:280px 1fr;gap:14px;align-items:start;}
+@media(max-width:680px){.rw-g{grid-template-columns:1fr;}}
+.stage{padding:20px 16px;text-align:center;position:relative;overflow:visible;}
+.stage::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,rgba(255,184,212,.15),transparent);border-radius:0 0 18px 18px;pointer-events:none;}
+.stage-l{font-weight:700;font-size:.85rem;color:var(--p5);margin-bottom:10px;letter-spacing:.5px;text-transform:uppercase;}
+
+/* Princess SVG container - inline block so it sizes to content */
+.princess-wrap{
+  display:inline-block;
+  position:relative;
+  width:220px;
+  height:360px;
+}
+.princess-wrap svg{display:block;width:100%;height:100%;}
+
+.inv{padding:14px;max-height:520px;overflow-y:auto;}
+.inv::-webkit-scrollbar{width:5px;}.inv::-webkit-scrollbar-thumb{background:var(--p3);border-radius:3px;}
+.cat{margin-bottom:10px;}
+.cat-h{font-weight:700;font-size:.85rem;color:var(--p6);display:flex;align-items:center;gap:5px;margin-bottom:6px;padding-bottom:3px;border-bottom:1.5px solid var(--p2);}
+.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:5px;}
+.itm{width:56px;height:56px;border-radius:13px;border:2px solid var(--p2);background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1.3rem;transition:all .18s;position:relative;gap:1px;}
+.itm .il{font-size:.45rem;color:var(--textM);line-height:1;max-width:50px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.itm:hover{transform:scale(1.1);border-color:var(--p5);box-shadow:0 3px 14px rgba(255,77,148,.18);}
+.itm.lk{opacity:.3;cursor:not-allowed;filter:grayscale(.8);}.itm.lk::after{content:'🔒';position:absolute;font-size:.55rem;bottom:1px;right:2px;}
+.itm.eq{border-color:var(--p5);background:var(--p1);box-shadow:0 0 12px rgba(255,77,148,.22);}
+.itm.nw{box-shadow:0 0 14px rgba(255,215,0,.5);border-color:var(--gold);}
+.rw-btns{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.rb{padding:12px 28px;border-radius:14px;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all .2s;}
+.rb:hover{transform:translateY(-3px);}
+.rb-p{background:linear-gradient(135deg,var(--p4),var(--p5));color:#fff;box-shadow:0 6px 18px rgba(255,77,148,.3);}
+.rb-h{background:#fff;color:var(--p5);border-color:var(--p3);}
+.confC{position:fixed;inset:0;pointer-events:none;z-index:200;overflow:hidden;}
+.cf{position:absolute;top:-12px;animation:cfl var(--fd) linear forwards;}
+@keyframes cfl{0%{transform:translateY(0) rotate(0);opacity:1;}85%{opacity:1;}100%{transform:translateY(100vh) rotate(var(--r));opacity:0;}}
+.snd{position:fixed;top:10px;right:10px;z-index:300;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid rgba(255,255,255,.8);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:var(--shadow);backdrop-filter:blur(8px);}
+.snd:hover{transform:scale(1.1);}
+.music-btn{position:fixed;top:10px;right:60px;z-index:300;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid rgba(255,255,255,.8);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:var(--shadow);backdrop-filter:blur(8px);}
+.music-btn:hover{transform:scale(1.1);}
+.music-btn.playing{animation:mp 1s ease-in-out infinite;}
+@keyframes mp{0%,100%{box-shadow:var(--shadow);}50%{box-shadow:0 0 20px rgba(255,77,148,.3);}}
+
+/* Accessory overlay items on princess */
+.acc-ov{position:absolute;pointer-events:none;z-index:5;}
+</style>
+</head>
+<body>
+<button class="snd" id="sndBtn" onclick="tglSnd()">🔊</button>
+<button class="music-btn" id="musicBtn" onclick="tglMusic()">🎵</button>
+<div class="hearts" id="hts"></div>
+<div class="app">
+<header class="hdr"><h1>Princess Math</h1><p>✨ for Rayna Ahn ✨</p></header>
+
+<!-- HOME -->
+<div class="scr on" id="homeScr">
+  <div class="home-stage"><div class="princess-wrap" id="homeAva"></div></div>
+  <button class="btn-go" onclick="startGame()">✨ Start Game ✨</button>
+  <div class="stats-row">
+    <div class="stat glass"><div class="n" id="sG">0</div><div class="l">Games</div></div>
+    <div class="stat glass"><div class="n" id="sI">0</div><div class="l">Items</div></div>
+    <div class="stat glass"><div class="n" id="sP">0</div><div class="l">Perfect</div></div>
+  </div>
+  <button class="btn-cl" onclick="openCloset()">👗 My Closet</button>
+</div>
+
+<!-- GAME -->
+<div class="scr" id="gameScr">
+  <div class="topbar glass">
+    <button class="bk" onclick="goHome()">← Back</button>
+    <div class="dots" id="dots"></div>
+    <div class="pill">⭐ <span id="sc">0</span>/10</div>
+  </div>
+  <div class="prob glass">
+    <div class="ptxt"><span class="a" id="pA">0</span><span class="x">×</span><span class="b" id="pB">0</span><span class="e">=</span><span class="r" id="pR">?</span></div>
+  </div>
+  <div class="pad">
+    <button class="nb" onclick="inp('1')">1</button><button class="nb" onclick="inp('2')">2</button><button class="nb" onclick="inp('3')">3</button>
+    <button class="nb" onclick="inp('4')">4</button><button class="nb" onclick="inp('5')">5</button><button class="nb" onclick="inp('6')">6</button>
+    <button class="nb" onclick="inp('7')">7</button><button class="nb" onclick="inp('8')">8</button><button class="nb" onclick="inp('9')">9</button>
+    <button class="nb dl" onclick="del()">⌫</button><button class="nb" onclick="inp('0')">0</button><button class="nb go" onclick="submit()">✓</button>
+  </div>
+</div>
+
+<!-- REWARD -->
+<div class="scr" id="rewardScr">
+  <div class="rw-t" id="rwT">Amazing!</div>
+  <div class="rw-s" id="rwS"></div>
+  <div style="text-align:center"><div class="rw-b" id="rwB"></div></div>
+  <div class="rw-g">
+    <div class="stage glass"><div class="stage-l">My Princess</div><div class="princess-wrap" id="rwAva"></div></div>
+    <div class="inv glass" id="rwInv"></div>
+  </div>
+  <div class="rw-btns"><button class="rb rb-p" onclick="startGame()">🎮 Play Again</button><button class="rb rb-h" onclick="goHome()">🏠 Home</button></div>
+</div>
+
+<!-- CLOSET -->
+<div class="scr" id="closetScr">
+  <div class="rw-t">My Closet 👗</div>
+  <div class="rw-s">Dress up your princess with collected items!</div>
+  <div class="rw-g">
+    <div class="stage glass"><div class="stage-l">My Princess</div><div class="princess-wrap" id="clAva"></div></div>
+    <div class="inv glass" id="clInv"></div>
+  </div>
+  <div class="rw-btns"><button class="rb rb-p" onclick="startGame()">🎮 Play</button><button class="rb rb-h" onclick="goHome()">🏠 Home</button></div>
+</div>
+</div>
+
+<div class="fbov" id="fbov"><div class="fbx"><div class="fbe" id="fbe"></div><div class="fbt" id="fbt"></div><div class="fba" id="fba"></div></div></div>
+<div class="confC" id="confC"></div>
+
+<script>
+// ========== AUDIO ==========
+class SFX{
+  constructor(){this.c=null;this.on=true;}
+  i(){if(!this.c)this.c=new(window.AudioContext||window.webkitAudioContext)();if(this.c.state==='suspended')this.c.resume();}
+  t(f,d,tp='sine',v=.1){if(!this.on||!this.c)return;try{const o=this.c.createOscillator(),g=this.c.createGain();o.type=tp;o.frequency.setValueAtTime(f,this.c.currentTime);g.gain.setValueAtTime(v,this.c.currentTime);g.gain.exponentialRampToValueAtTime(.001,this.c.currentTime+d);o.connect(g).connect(this.c.destination);o.start();o.stop(this.c.currentTime+d);}catch(e){}}
+  click(){this.i();this.t(880,.04,'sine',.04);}
+  ok(){this.i();this.t(523,.12,'sine',.08);setTimeout(()=>this.t(659,.12,'sine',.08),80);setTimeout(()=>this.t(784,.2,'sine',.08),160);}
+  no(){this.i();this.t(220,.22,'sawtooth',.05);setTimeout(()=>this.t(196,.22,'sawtooth',.05),110);}
+  win(){this.i();[523,587,659,784,880,1047].forEach((f,i)=>setTimeout(()=>this.t(f,.22,'sine',.07),i*90));}
+  eq(){this.i();this.t(698,.08,'sine',.06);setTimeout(()=>this.t(880,.12,'sine',.06),60);}
+}
+const sfx=new SFX();
+function tglSnd(){sfx.i();sfx.on=!sfx.on;document.getElementById('sndBtn').textContent=sfx.on?'🔊':'🔇';}
+
+// ========== BGM ==========
+class BGM{
+  constructor(){this.c=null;this.playing=false;this.iv=null;this.padIv=null;}
+  init(){if(!this.c)this.c=new(window.AudioContext||window.webkitAudioContext)();if(this.c.state==='suspended')this.c.resume();}
+  start(){
+    if(this.playing)return;this.init();this.playing=true;
+    const melody=[
+      {n:523,d:.35},{n:523,d:.35},{n:784,d:.35},{n:784,d:.35},
+      {n:880,d:.35},{n:880,d:.35},{n:784,d:.7},
+      {n:698,d:.35},{n:698,d:.35},{n:659,d:.35},{n:659,d:.35},
+      {n:587,d:.35},{n:587,d:.35},{n:523,d:.7},
+      {n:784,d:.35},{n:784,d:.35},{n:698,d:.35},{n:698,d:.35},
+      {n:659,d:.35},{n:659,d:.35},{n:587,d:.7},
+      {n:784,d:.35},{n:784,d:.35},{n:698,d:.35},{n:698,d:.35},
+      {n:659,d:.35},{n:659,d:.35},{n:587,d:.7},
+      {n:1047,d:.25},{n:988,d:.25},{n:880,d:.25},{n:784,d:.5},
+      {n:698,d:.25},{n:659,d:.25},{n:587,d:.25},{n:523,d:.5},
+      {n:587,d:.35},{n:659,d:.35},{n:698,d:.35},{n:784,d:.7},
+      {n:880,d:.35},{n:784,d:.35},{n:698,d:.35},{n:659,d:.7},
+    ];
+    let idx=0;
+    const self=this;
+    const padPlay=()=>{
+      if(!self.playing||!self.c)return;
+      try{
+        [262,330,392].forEach(f=>{
+          const o=self.c.createOscillator(),g=self.c.createGain();
+          o.type='sine';o.frequency.setValueAtTime(f,self.c.currentTime);
+          g.gain.setValueAtTime(.015,self.c.currentTime);
+          g.gain.exponentialRampToValueAtTime(.001,self.c.currentTime+4);
+          o.connect(g).connect(self.c.destination);o.start();o.stop(self.c.currentTime+4);
+        });
+      }catch(e){}
+    };
+    padPlay();
+    this.padIv=setInterval(()=>{if(self.playing)padPlay();else clearInterval(self.padIv);},4000);
+    const playNote=()=>{
+      if(!self.playing){clearInterval(self.iv);return;}
+      const note=melody[idx%melody.length];
+      try{
+        const o=self.c.createOscillator(),g=self.c.createGain();
+        o.type='sine';o.frequency.setValueAtTime(note.n,self.c.currentTime);
+        g.gain.setValueAtTime(.04,self.c.currentTime);
+        g.gain.exponentialRampToValueAtTime(.001,self.c.currentTime+note.d*1.5);
+        o.connect(g).connect(self.c.destination);o.start();o.stop(self.c.currentTime+note.d*1.5);
+        const o2=self.c.createOscillator(),g2=self.c.createGain();
+        o2.type='sine';o2.frequency.setValueAtTime(note.n*2,self.c.currentTime);
+        g2.gain.setValueAtTime(.01,self.c.currentTime);
+        g2.gain.exponentialRampToValueAtTime(.001,self.c.currentTime+note.d*.8);
+        o2.connect(g2).connect(self.c.destination);o2.start();o2.stop(self.c.currentTime+note.d*.8);
+      }catch(e){}
+      idx++;
+    };
+    playNote();
+    this.iv=setInterval(playNote,380);
+  }
+  stop(){this.playing=false;if(this.iv)clearInterval(this.iv);if(this.padIv)clearInterval(this.padIv);this.iv=null;this.padIv=null;}
+  toggle(){if(this.playing)this.stop();else{this.init();this.start();}return this.playing;}
+}
+const bgm=new BGM();
+function tglMusic(){bgm.init();const p=bgm.toggle();document.getElementById('musicBtn').textContent=p?'🎶':'🎵';document.getElementById('musicBtn').classList.toggle('playing',p);}
+
+// ========== HAIR STYLES ==========
+const HAIRS={
+  default:{name:'Long Wavy',color:'#5C3317',hi:'#8B5E3C',
+    back:(c,h)=>`<ellipse cx="120" cy="75" rx="58" ry="56" fill="${c}"/>
+      <path d="M64 80 Q48 150 55 240 Q58 270 68 285" stroke="${c}" stroke-width="24" fill="none" stroke-linecap="round" opacity=".9"/>
+      <path d="M176 80 Q192 150 185 240 Q182 270 172 285" stroke="${c}" stroke-width="24" fill="none" stroke-linecap="round" opacity=".9"/>
+      <path d="M80 48 Q88 90 76 135" stroke="${h}" stroke-width="2.5" fill="none" opacity=".3" stroke-linecap="round"/>
+      <path d="M160 48 Q152 90 164 135" stroke="${h}" stroke-width="2.5" fill="none" opacity=".3" stroke-linecap="round"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q88 36 110 33 Q120 31 130 33 Q152 36 162 62" fill="${c}"/>
+      <path d="M84 58 Q94 42 110 38" stroke="${h}" stroke-width="2.5" fill="none" opacity=".35" stroke-linecap="round"/>`,
+  },
+  hr1:{name:'Braided',color:'#3D1F0B',hi:'#6B3A1F',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="56" ry="54" fill="${c}"/>
+      <path d="M68 85 Q58 130 62 170 Q66 200 72 220 Q78 240 80 260" stroke="${c}" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <path d="M172 85 Q182 130 178 170 Q174 200 168 220 Q162 240 160 260" stroke="${c}" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <circle cx="80" cy="264" r="8" fill="${c}"/><circle cx="160" cy="264" r="8" fill="${c}"/>
+      <path d="M62 140 Q72 135 68 155 Q78 150 72 170" stroke="${h}" stroke-width="2" fill="none" opacity=".3"/>
+      <path d="M178 140 Q168 135 172 155 Q162 150 168 170" stroke="${h}" stroke-width="2" fill="none" opacity=".3"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q90 38 120 34 Q150 38 162 62" fill="${c}"/>`,
+  },
+  hr2:{name:'Short Bob',color:'#1a1a2e',hi:'#3a3a5e',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="56" ry="54" fill="${c}"/>
+      <path d="M66 78 Q56 110 62 145 Q68 155 78 158" stroke="${c}" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <path d="M174 78 Q184 110 178 145 Q172 155 162 158" stroke="${c}" stroke-width="20" fill="none" stroke-linecap="round"/>`,
+    bangs:(c,h)=>`<path d="M76 64 Q85 38 105 32 Q120 28 135 32 Q155 38 164 64" fill="${c}"/>
+      <path d="M82 60 Q90 45 100 40" stroke="${h}" stroke-width="2" fill="none" opacity=".3" stroke-linecap="round"/>
+      <path d="M120 35 Q122 50 118 58" stroke="${h}" stroke-width="2" fill="none" opacity=".25" stroke-linecap="round"/>`,
+  },
+  hr3:{name:'Ponytail',color:'#D4A574',hi:'#E8C9A0',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="55" ry="53" fill="${c}"/>
+      <path d="M158 55 Q180 60 188 80 Q195 110 185 170 Q178 220 172 260" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <ellipse cx="165" cy="52" rx="12" ry="8" fill="#FF7EB3"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q88 36 112 33 Q125 31 138 34 Q158 40 162 60" fill="${c}"/>
+      <path d="M85 58 Q95 42 112 38" stroke="${h}" stroke-width="2.5" fill="none" opacity=".35" stroke-linecap="round"/>`,
+  },
+  hr4:{name:'Princess Curls',color:'#C4841D',hi:'#E0A840',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="58" ry="56" fill="${c}"/>
+      <path d="M62 82 Q48 120 52 165 Q50 200 55 230 Q48 250 55 270 Q48 285 58 295" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M178 82 Q192 120 188 165 Q190 200 185 230 Q192 250 185 270 Q192 285 182 295" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M52 170 Q42 175 48 190" stroke="${h}" stroke-width="3" fill="none" opacity=".3" stroke-linecap="round"/>
+      <path d="M188 170 Q198 175 192 190" stroke="${h}" stroke-width="3" fill="none" opacity=".3" stroke-linecap="round"/>`,
+    bangs:(c,h)=>`<path d="M76 62 Q86 34 108 30 Q120 28 132 30 Q154 34 164 62" fill="${c}"/>
+      <path d="M82 55 Q92 38 108 34" stroke="${h}" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>`,
+  },
+  hr5:{name:'Twin Tails',color:'#FF69B4',hi:'#FFB6DA',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="55" ry="53" fill="${c}"/>
+      <path d="M68 65 Q40 75 32 120 Q28 165 35 220 Q38 260 45 280" stroke="${c}" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <path d="M172 65 Q200 75 208 120 Q212 165 205 220 Q202 260 195 280" stroke="${c}" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <ellipse cx="68" cy="60" rx="10" ry="7" fill="#FF4D94"/><ellipse cx="172" cy="60" rx="10" ry="7" fill="#FF4D94"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q90 40 120 36 Q150 40 162 62" fill="${c}"/>
+      <path d="M88 56 Q100 42 115 40" stroke="${h}" stroke-width="2" fill="none" opacity=".35" stroke-linecap="round"/>`,
+  },
+  hr6:{name:'Bun Updo',color:'#8B4513',hi:'#B8733A',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="54" ry="52" fill="${c}"/>
+      <circle cx="120" cy="28" r="24" fill="${c}"/>
+      <circle cx="120" cy="28" r="18" fill="${h}" opacity=".15"/>`,
+    bangs:(c,h)=>`<path d="M80 62 Q92 42 120 38 Q148 42 160 62" fill="${c}"/>
+      <path d="M88 56 Q100 44 118 40" stroke="${h}" stroke-width="2" fill="none" opacity=".3" stroke-linecap="round"/>`,
+  },
+};
+
+// ========== DRESS STYLES ==========
+const DRESSES={
+  default:{name:'Classic',
+    bodice:(c)=>`<path d="M88 138 Q90 132 108 128 Q120 126 132 128 Q150 132 152 138 L158 180 Q120 186 82 180 Z" fill="${c[0]}"/>
+      <path d="M92 138 Q120 124 148 138" stroke="${c[2]}" stroke-width="1.5" fill="none" opacity=".4"/>
+      <circle cx="120" cy="150" r="4" fill="${c[3]}" opacity=".7"/>`,
+    skirt:(c)=>`<path d="M82 180 Q78 192 52 285 Q38 335 26 370 L214 370 Q202 335 188 285 Q162 192 158 180 Q120 186 82 180Z" fill="${c[1]}"/>
+      <path d="M68 225 Q120 238 172 225" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".3"/>
+      <path d="M54 275 Q120 290 186 275" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".25"/>
+      <path d="M38 330 Q120 348 202 330" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".2"/>`,
+    sleeves:(c)=>`<ellipse cx="80" cy="150" rx="16" ry="14" fill="${c[0]}" opacity=".9"/><ellipse cx="160" cy="150" rx="16" ry="14" fill="${c[0]}" opacity=".9"/>`,
+  },
+  dr1:{name:'Ball Gown',
+    bodice:(c)=>`<path d="M85 138 Q88 130 108 126 Q120 124 132 126 Q152 130 155 138 L160 176 Q120 182 80 176 Z" fill="${c[0]}"/>
+      <path d="M90 138 Q120 122 150 138" stroke="${c[2]}" stroke-width="2" fill="none" opacity=".35"/>
+      <path d="M105 140 L120 158 L135 140" stroke="${c[3]}" stroke-width="1.5" fill="none" opacity=".5"/>
+      <circle cx="120" cy="160" r="3.5" fill="${c[3]}" opacity=".7"/>`,
+    skirt:(c)=>`<path d="M80 176 Q70 195 35 290 Q18 345 8 375 L232 375 Q222 345 205 290 Q170 195 160 176 Q120 182 80 176Z" fill="${c[1]}"/>
+      <path d="M60 220 Q120 235 180 220" stroke="${c[0]}" stroke-width="2" fill="none" opacity=".25"/>
+      <path d="M40 270 Q120 288 200 270" stroke="${c[0]}" stroke-width="2" fill="none" opacity=".2"/>
+      <circle cx="95" cy="250" r="2" fill="${c[3]}" opacity=".4"/><circle cx="145" cy="270" r="2" fill="${c[3]}" opacity=".35"/>
+      <circle cx="80" cy="310" r="1.8" fill="${c[3]}" opacity=".3"/><circle cx="160" cy="300" r="2" fill="${c[3]}" opacity=".3"/>`,
+    sleeves:(c)=>`<ellipse cx="76" cy="148" rx="18" ry="16" fill="${c[0]}" opacity=".85"/><ellipse cx="164" cy="148" rx="18" ry="16" fill="${c[0]}" opacity=".85"/>`,
+  },
+  dr2:{name:'Mermaid',
+    bodice:(c)=>`<path d="M90 138 Q92 132 108 128 Q120 126 132 128 Q148 132 150 138 L154 180 Q120 184 86 180 Z" fill="${c[0]}"/>
+      <path d="M94 138 Q120 124 146 138" stroke="${c[2]}" stroke-width="1.5" fill="none" opacity=".4"/>
+      <circle cx="120" cy="148" r="3" fill="${c[3]}" opacity=".6"/>`,
+    skirt:(c)=>`<path d="M86 180 Q84 210 82 260 Q80 310 60 345 Q40 365 20 375 L220 375 Q200 365 180 345 Q160 310 158 260 Q156 210 154 180 Q120 184 86 180Z" fill="${c[1]}"/>
+      <path d="M82 260 Q120 268 158 260" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".3"/>`,
+    sleeves:(c)=>`<ellipse cx="82" cy="148" rx="14" ry="12" fill="${c[0]}" opacity=".9"/><ellipse cx="158" cy="148" rx="14" ry="12" fill="${c[0]}" opacity=".9"/>`,
+  },
+};
+const COLORS={
+  default:{n:'Rose Pink',c:['#FFB8D4','#FF7EB3','#FF4D94','#FFD1E3']},
+  cl1:{n:'Purple',c:['#D8B4FE','#A855F7','#7E22CE','#E9D5FF']},
+  cl2:{n:'Blue',c:['#93C5FD','#3B82F6','#1D4ED8','#BFDBFE']},
+  cl3:{n:'Emerald',c:['#86EFAC','#22C55E','#15803D','#BBF7D0']},
+  cl4:{n:'Ruby',c:['#FCA5A5','#EF4444','#B91C1C','#FECACA']},
+  cl5:{n:'White',c:['#F1F5F9','#CBD5E1','#94A3B8','#E2E8F0']},
+  cl6:{n:'Golden',c:['#FDE68A','#F59E0B','#B45309','#FEF3C7']},
+  cl7:{n:'Midnight',c:['#818CF8','#4F46E5','#3730A3','#C7D2FE']},
+  cl8:{n:'Sunset',c:['#FDBA74','#F97316','#C2410C','#FED7AA']},
+  cl9:{n:'Magenta',c:['#FDA4AF','#F43F5E','#BE123C','#FFE4E6']},
+  cl10:{n:'Aqua',c:['#A5F3FC','#22D3EE','#0891B2','#CFFAFE']},
+  cl11:{n:'Peach',c:['#FECDD3','#FB7185','#E11D48','#FFE4E6']},
+};
+
+// ========== ACCESSORIES ==========
+const DB={
+  hairstyle:{name:'💇‍♀️ Hairstyle',items:[
+    {id:'_hd',em:'💗',lb:'Long Wavy',val:'default'},
+    {id:'_h1',em:'🎀',lb:'Braided',val:'hr1'},{id:'_h2',em:'✂️',lb:'Short Bob',val:'hr2'},
+    {id:'_h3',em:'🎗️',lb:'Ponytail',val:'hr3'},{id:'_h4',em:'👸',lb:'Curls',val:'hr4'},
+    {id:'_h5',em:'🌸',lb:'Twin Tails',val:'hr5'},{id:'_h6',em:'💎',lb:'Bun Updo',val:'hr6'},
+  ]},
+  dressStyle:{name:'👗 Dress Style',items:[
+    {id:'_sd',em:'👗',lb:'Classic',val:'default'},
+    {id:'_s1',em:'💃',lb:'Ball Gown',val:'dr1'},{id:'_s2',em:'🧜‍♀️',lb:'Mermaid',val:'dr2'},
+  ]},
+  dressColor:{name:'🎨 Dress Color',items:[
+    {id:'_cd',em:'💗',lb:'Rose Pink',val:'default'},
+    {id:'_c1',em:'💜',lb:'Purple',val:'cl1'},{id:'_c2',em:'💙',lb:'Blue',val:'cl2'},
+    {id:'_c3',em:'💚',lb:'Emerald',val:'cl3'},{id:'_c4',em:'❤️',lb:'Ruby',val:'cl4'},
+    {id:'_c5',em:'🤍',lb:'White',val:'cl5'},{id:'_c6',em:'💛',lb:'Golden',val:'cl6'},
+    {id:'_c7',em:'🔵',lb:'Midnight',val:'cl7'},{id:'_c8',em:'🧡',lb:'Sunset',val:'cl8'},
+    {id:'_c9',em:'💖',lb:'Magenta',val:'cl9'},{id:'_c10',em:'🩵',lb:'Aqua',val:'cl10'},
+    {id:'_c11',em:'🩷',lb:'Peach',val:'cl11'},
+  ]},
+  tiara:{name:'👑 Tiara',items:[
+    {id:'t1',em:'👑',lb:'Gold Crown'},{id:'t2',em:'💎',lb:'Diamond'},{id:'t3',em:'🌸',lb:'Flower'},
+    {id:'t4',em:'⭐',lb:'Star'},{id:'t5',em:'🦋',lb:'Butterfly'},{id:'t6',em:'❄️',lb:'Ice'},
+    {id:'t7',em:'🌙',lb:'Moon'},{id:'t8',em:'☀️',lb:'Sun'},{id:'t9',em:'💗',lb:'Heart'},{id:'t10',em:'🎀',lb:'Ribbon'},
+  ]},
+  necklace:{name:'📿 Necklace',items:[
+    {id:'n1',em:'📿',lb:'Pearl'},{id:'n2',em:'💎',lb:'Diamond'},{id:'n3',em:'💗',lb:'Heart'},
+    {id:'n4',em:'🌟',lb:'Star'},{id:'n5',em:'🌙',lb:'Moon'},{id:'n6',em:'🔮',lb:'Crystal'},
+    {id:'n7',em:'🦋',lb:'Butterfly'},{id:'n8',em:'🌸',lb:'Blossom'},{id:'n9',em:'❄️',lb:'Snow'},
+  ]},
+  earring:{name:'✨ Earrings',items:[
+    {id:'e1',em:'💎',lb:'Diamond'},{id:'e2',em:'⭐',lb:'Star'},{id:'e3',em:'🌙',lb:'Moon'},
+    {id:'e4',em:'💗',lb:'Heart'},{id:'e5',em:'🌸',lb:'Flower'},{id:'e6',em:'🍒',lb:'Cherry'},
+    {id:'e7',em:'🦋',lb:'Butterfly'},{id:'e8',em:'💧',lb:'Teardrop'},
+  ]},
+  shoes:{name:'👠 Shoes',items:[
+    {id:'s1',em:'👠',lb:'Ruby Heels'},{id:'s2',em:'👡',lb:'Sandals'},{id:'s3',em:'🥿',lb:'Glass Slipper'},
+    {id:'s4',em:'👢',lb:'Boots'},{id:'s5',em:'🩰',lb:'Ballet'},{id:'s6',em:'✨',lb:'Magic'},
+  ]},
+  wand:{name:'🪄 Wand',items:[
+    {id:'w1',em:'🪄',lb:'Magic'},{id:'w2',em:'⭐',lb:'Star'},{id:'w3',em:'💗',lb:'Heart'},
+    {id:'w4',em:'🌸',lb:'Flower'},{id:'w5',em:'❄️',lb:'Ice'},{id:'w6',em:'🔮',lb:'Crystal'},
+  ]},
+  pet:{name:'🐾 Pet',items:[
+    {id:'p1',em:'🐱',lb:'Kitten'},{id:'p2',em:'🐶',lb:'Puppy'},{id:'p3',em:'🐰',lb:'Bunny'},
+    {id:'p4',em:'🦄',lb:'Unicorn'},{id:'p5',em:'🦋',lb:'Butterfly'},{id:'p6',em:'🐦',lb:'Bird'},
+    {id:'p7',em:'🦢',lb:'Swan'},{id:'p8',em:'🐣',lb:'Chick'},
+  ]},
+};
+const ALL=[];Object.keys(DB).forEach(c=>DB[c].items.forEach(i=>ALL.push({...i,cat:c})));
+
+// ========== STATE ==========
+let S=JSON.parse(localStorage.getItem('pm4')||'null')||{ul:['_hd','_sd','_cd'],eq:{hairstyle:'_hd',dressStyle:'_sd',dressColor:'_cd'},tg:0,pg:0};
+['_hd','_sd','_cd'].forEach(x=>{if(!S.ul.includes(x))S.ul.push(x);});
+if(!S.eq.hairstyle)S.eq.hairstyle='_hd';if(!S.eq.dressStyle)S.eq.dressStyle='_sd';if(!S.eq.dressColor)S.eq.dressColor='_cd';
+let cQ=0,score=0,cAns='',corr=0,n1=0,n2=0,newUL=[];
+const TOT=10;
+function save(){localStorage.setItem('pm4',JSON.stringify(S));}
+function fi(id){return ALL.find(x=>x.id===id);}
+function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
+function goHome(){show('homeScr');updStats();renderP('homeAva');}
+function updStats(){document.getElementById('sG').textContent=S.tg;document.getElementById('sI').textContent=S.ul.length;document.getElementById('sP').textContent=S.pg;}
+
+// ========== RENDER PRINCESS (unique IDs per instance) ==========
+let renderCount=0;
+function renderP(containerId){
+  renderCount++;
+  const uid='p'+renderCount; // unique prefix for SVG defs
+  const el=document.getElementById(containerId);
+  if(!el)return;
+  const eq=S.eq;
+
+  const hairItem=fi(eq.hairstyle);
+  const hairKey=hairItem?.val||'default';
+  const hair=HAIRS[hairKey]||HAIRS.default;
+  const dressItem=fi(eq.dressStyle);
+  const dressKey=dressItem?.val||'default';
+  const dress=DRESSES[dressKey]||DRESSES.default;
+  const colorItem=fi(eq.dressColor);
+  const colorKey=colorItem?.val||'default';
+  const colors=(COLORS[colorKey]||COLORS.default).c;
+
+  const hc=hair.color,hh=hair.hi;
+
+  const svg=`<svg viewBox="0 0 240 390" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:100%;">
+  <defs>
+    <radialGradient id="${uid}sk"><stop offset="0%" stop-color="#FDDCB5"/><stop offset="100%" stop-color="#F5C9A0"/></radialGradient>
+  </defs>
+  <!-- Hair back -->${hair.back(hc,hh)}
+  <!-- Face --><ellipse cx="120" cy="82" rx="42" ry="44" fill="url(#${uid}sk)"/>
+  <!-- Bangs -->${hair.bangs(hc,hh)}
+  <!-- Eyes -->
+  <ellipse cx="102" cy="82" rx="7.5" ry="9" fill="#2D1B00"/>
+  <ellipse cx="138" cy="82" rx="7.5" ry="9" fill="#2D1B00"/>
+  <ellipse cx="105" cy="79" rx="3" ry="3.5" fill="white" opacity=".9"/>
+  <ellipse cx="141" cy="79" rx="3" ry="3.5" fill="white" opacity=".9"/>
+  <ellipse cx="100" cy="84" rx="1.5" ry="1.5" fill="white" opacity=".45"/>
+  <ellipse cx="136" cy="84" rx="1.5" ry="1.5" fill="white" opacity=".45"/>
+  <!-- Lashes -->
+  <path d="M92 74 Q88 69 85 67" stroke="#2D1B00" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M95 72 Q92 67 90 65" stroke="#2D1B00" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <path d="M148 74 Q152 69 155 67" stroke="#2D1B00" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M145 72 Q148 67 150 65" stroke="#2D1B00" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <!-- Brows -->
+  <path d="M92 68 Q100 63 112 66" stroke="${hc}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".45"/>
+  <path d="M148 68 Q140 63 128 66" stroke="${hc}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".45"/>
+  <!-- Blush -->
+  <ellipse cx="88" cy="94" rx="10" ry="5.5" fill="#FFB3C1" opacity=".45"/>
+  <ellipse cx="152" cy="94" rx="10" ry="5.5" fill="#FFB3C1" opacity=".45"/>
+  <!-- Nose -->
+  <path d="M118 90 Q120 94 122 90" stroke="#E8B090" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <!-- Mouth -->
+  <path d="M108 102 Q120 112 132 102" stroke="#E05A6D" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M112 103 Q120 108 128 103" fill="#F4848A" opacity=".35"/>
+  <!-- Neck -->
+  <path d="M110 124 L108 138 L132 138 L130 124" fill="url(#${uid}sk)"/>
+  <!-- Dress -->
+  ${dress.bodice(colors)}
+  ${dress.sleeves(colors)}
+  <!-- Arms -->
+  <path d="M${dressKey==='dr1'?'68':'70'} 154 Q50 182 42 202" stroke="#F5C9A0" stroke-width="11" fill="none" stroke-linecap="round"/>
+  <path d="M${dressKey==='dr1'?'172':'170'} 154 Q190 182 198 202" stroke="#F5C9A0" stroke-width="11" fill="none" stroke-linecap="round"/>
+  <circle cx="40" cy="206" r="7" fill="#FDDCB5"/><circle cx="200" cy="206" r="7" fill="#FDDCB5"/>
+  ${dress.skirt(colors)}
+  </svg>`;
+
+  // Emoji overlays
+  let ov='';
+  const tiaraY=hairKey==='hr6'?-8:2;
+  if(eq.tiara){const it=fi(eq.tiara);if(it)ov+=`<div class="acc-ov" style="top:${tiaraY}px;left:50%;transform:translateX(-50%);font-size:2.2rem;filter:drop-shadow(0 2px 6px rgba(245,166,35,.3));">${it.em}</div>`;}
+  if(eq.earring){const it=fi(eq.earring);if(it){ov+=`<div class="acc-ov" style="top:82px;left:28px;font-size:.9rem;">${it.em}</div>`;ov+=`<div class="acc-ov" style="top:82px;right:28px;font-size:.9rem;">${it.em}</div>`;}}
+  if(eq.necklace){const it=fi(eq.necklace);if(it)ov+=`<div class="acc-ov" style="top:125px;left:50%;transform:translateX(-50%);font-size:1.2rem;">${it.em}</div>`;}
+  if(eq.shoes){const it=fi(eq.shoes);if(it)ov+=`<div class="acc-ov" style="bottom:4px;left:50%;transform:translateX(-50%);font-size:1.3rem;">${it.em}</div>`;}
+  if(eq.wand){const it=fi(eq.wand);if(it)ov+=`<div class="acc-ov" style="top:168px;left:-2px;font-size:1.5rem;transform:rotate(-25deg);">${it.em}</div>`;}
+  if(eq.pet){const it=fi(eq.pet);if(it)ov+=`<div class="acc-ov" style="bottom:18px;right:-6px;font-size:1.8rem;animation:bob 2s ease-in-out infinite;">${it.em}</div>`;}
+
+  el.innerHTML=svg+ov;
+}
+
+// ========== GAME ==========
+function startGame(){sfx.i();cQ=0;score=0;cAns='';newUL=[];show('gameScr');buildDots();updSc();next();}
+function buildDots(){const c=document.getElementById('dots');c.innerHTML='';for(let i=0;i<TOT;i++){const d=document.createElement('div');d.className='dot'+(i===0?' now':'');d.textContent=i+1;d.id='dt'+i;c.appendChild(d);}}
+function next(){n1=1+Math.floor(Math.random()*9);n2=1+Math.floor(Math.random()*9);corr=n1*n2;cAns='';document.getElementById('pA').textContent=n1;document.getElementById('pB').textContent=n2;document.getElementById('pR').textContent='?';document.getElementById('pR').classList.remove('has');for(let i=0;i<TOT;i++)document.getElementById('dt'+i).classList.toggle('now',i===cQ);const p=document.querySelector('.prob');p.style.animation='none';p.offsetHeight;p.style.animation='su .3s ease-out';}
+function inp(n){sfx.click();if(cAns.length>=3)return;cAns+=n;document.getElementById('pR').textContent=cAns;document.getElementById('pR').classList.add('has');}
+function del(){sfx.click();cAns=cAns.slice(0,-1);document.getElementById('pR').textContent=cAns||'?';if(!cAns)document.getElementById('pR').classList.remove('has');}
+function submit(){if(!cAns)return;const ok=parseInt(cAns)===corr;const d=document.getElementById('dt'+cQ);if(ok){score++;d.classList.add('ok');sfx.ok();showFB(true);}else{d.classList.add('no');sfx.no();showFB(false);}d.classList.remove('now');updSc();cQ++;if(cQ>=TOT)setTimeout(()=>endGame(),1300);else setTimeout(()=>next(),1300);}
+function updSc(){document.getElementById('sc').textContent=score;}
+function showFB(ok){const o=document.getElementById('fbov'),e=document.getElementById('fbe'),t=document.getElementById('fbt'),a=document.getElementById('fba');if(ok){e.textContent=['🎉','🌟','💖','✨','👏','💫'][~~(Math.random()*6)];t.textContent=['Correct!','Great Job!','Amazing!','Perfect!','Awesome!','Wonderful!'][~~(Math.random()*6)];t.className='fbt cg';a.textContent='';}else{e.textContent=['😊','💪','🤗'][~~(Math.random()*3)];t.textContent='Not quite!';t.className='fbt wg';a.textContent=`Answer: ${n1} × ${n2} = ${corr}`;}o.classList.add('on');setTimeout(()=>o.classList.remove('on'),1100);}
+function endGame(){S.tg++;if(score===TOT)S.pg++;const locked=ALL.filter(i=>!S.ul.includes(i.id));newUL=[];for(let i=0;i<score&&locked.length>0;i++){const idx=~~(Math.random()*locked.length);const it=locked.splice(idx,1)[0];S.ul.push(it.id);newUL.push(it);}save();document.getElementById('rwT').textContent=score>=8?'🎉 Amazing!':score>=5?'✨ Great Job!':'💪 Keep Trying!';document.getElementById('rwS').textContent=newUL.length>0?`🎁 You earned ${newUL.length} new item${newUL.length>1?'s':''}!`:'Earn items by answering correctly!';document.getElementById('rwB').textContent=`⭐ ${score} / ${TOT} Correct`;show('rewardScr');renderP('rwAva');renderInv('rwInv');if(score>=5)spawnConf();sfx.win();}
+
+// ========== INVENTORY ==========
+function renderInv(pid){
+  const p=document.getElementById(pid);p.innerHTML='';
+  Object.keys(DB).forEach(ck=>{
+    const cat=DB[ck];const dv=document.createElement('div');dv.className='cat';
+    dv.innerHTML=`<div class="cat-h">${cat.name}</div>`;
+    const g=document.createElement('div');g.className='igrid';
+    cat.items.forEach(it=>{
+      const ul=S.ul.includes(it.id),eq=S.eq[ck]===it.id,nw=newUL.some(n=>n.id===it.id);
+      const b=document.createElement('button');
+      b.className='itm'+(ul?'':' lk')+(eq?' eq':'')+(nw?' nw':'');
+      b.innerHTML=`${it.em}<span class="il">${it.lb}</span>`;
+      b.title=it.lb;
+      if(ul)b.onclick=()=>{
+        if(eq&&(ck==='hairstyle'||ck==='dressStyle'||ck==='dressColor'))return;
+        if(eq)delete S.eq[ck];else S.eq[ck]=it.id;
+        save();sfx.eq();
+        // Re-render all visible princesses
+        renderP('homeAva');
+        if(document.getElementById('rewardScr').classList.contains('on'))renderP('rwAva');
+        if(document.getElementById('closetScr').classList.contains('on'))renderP('clAva');
+        renderInv(pid);
+      };
+      g.appendChild(b);
+    });
+    dv.appendChild(g);p.appendChild(dv);
+  });
+}
+function openCloset(){newUL=[];show('closetScr');renderP('clAva');renderInv('clInv');}
+function spawnConf(){const b=document.getElementById('confC');b.innerHTML='';const cl=['#FFB8D4','#FF7EB3','#FF4D94','#C084FC','#F5A623','#86EFAC','#93C5FD','#FDE68A'];for(let i=0;i<55;i++){const p=document.createElement('div');p.className='cf';const c=cl[~~(Math.random()*cl.length)],sz=5+Math.random()*10,fd=2+Math.random()*3;p.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz*(.3+Math.random()*.7)}px;background:${c};border-radius:${Math.random()>.5?'50%':'2px'};--fd:${fd}s;--r:${-720+Math.random()*1440}deg;animation-delay:${Math.random()*.8}s;`;b.appendChild(p);setTimeout(()=>p.remove(),(fd+1)*1e3);}}
+
+// Hearts BG
+(function(){const c=document.getElementById('hts');const e=['💗','💖','✨','🌸','♡','⋆'];for(let i=0;i<14;i++){const h=document.createElement('div');h.className='ht';h.textContent=e[~~(Math.random()*e.length)];h.style.left=Math.random()*100+'%';h.style.top=Math.random()*100+'%';h.style.setProperty('--d',(3+Math.random()*4)+'s');h.style.fontSize=(.7+Math.random()*1.2)+'rem';h.style.animationDelay=Math.random()*3+'s';c.appendChild(h);}})();
+
+// Keyboard
+document.addEventListener('keydown',e=>{if(!document.getElementById('gameScr').classList.contains('on'))return;if(e.key>='0'&&e.key<='9')inp(e.key);else if(e.key==='Backspace'){e.preventDefault();del();}else if(e.key==='Enter')submit();});
+
+// Init
+updStats();renderP('homeAva');
+</script>
+</body>
+</html>
