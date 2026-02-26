@@ -117,6 +117,23 @@ body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:ra
 
 /* Accessory overlay items on princess */
 .acc-ov{position:absolute;pointer-events:none;z-index:5;}
+/* MODE SELECT */
+.mode-title{text-align:center;font-family:'Sacramento',cursive;font-size:2.6rem;color:var(--p5);margin-top:14px;}
+.mode-sub{text-align:center;font-size:.88rem;color:var(--textM);margin-bottom:16px;}
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;max-width:600px;margin:0 auto;padding:0 10px;}
+.mode-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 12px;border:2px solid var(--p2);border-radius:18px;background:var(--card);backdrop-filter:blur(8px);cursor:pointer;font-family:inherit;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 16px rgba(230,24,110,.06);}
+.mode-btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 28px rgba(230,24,110,.15);}
+.mode-btn:active{transform:scale(.96);}
+.mode-icon{font-size:2.2rem;}
+.mode-name{font-size:1.05rem;font-weight:700;color:var(--p5);}
+.mode-desc{font-size:.72rem;color:var(--textM);text-align:center;}
+.mb-add{border-color:#86EFAC;}.mb-add:hover{background:#F0FFF4;}
+.mb-sub{border-color:#93C5FD;}.mb-sub:hover{background:#EFF6FF;}
+.mb-mul{border-color:#FCA5D0;}.mb-mul:hover{background:#FFF0F6;}
+.mb-div{border-color:#FDE68A;}.mb-div:hover{background:#FFFBEB;}
+.mb-mix{border-color:#C4B5FD;}.mb-mix:hover{background:#F5F3FF;}
+.mode-badge{display:inline-block;padding:2px 10px;border-radius:10px;font-size:.7rem;font-weight:700;color:#fff;margin-bottom:4px;}
+
 </style>
 </head>
 <body>
@@ -129,13 +146,47 @@ body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:ra
 <!-- HOME -->
 <div class="scr on" id="homeScr">
   <div class="home-stage"><div class="princess-wrap" id="homeAva"></div></div>
-  <button class="btn-go" onclick="startGame()">✨ Start Game ✨</button>
+  <button class="btn-go" onclick="showModes()">✨ Start Game ✨</button>
   <div class="stats-row">
     <div class="stat glass"><div class="n" id="sG">0</div><div class="l">Games</div></div>
     <div class="stat glass"><div class="n" id="sI">0</div><div class="l">Items</div></div>
     <div class="stat glass"><div class="n" id="sP">0</div><div class="l">Perfect</div></div>
   </div>
   <button class="btn-cl" onclick="openCloset()">👗 My Closet</button>
+</div>
+
+<!-- MODE SELECT -->
+<div class="scr" id="modeScr">
+  <div class="mode-title">Choose Math Type!</div>
+  <div class="mode-sub">초등 3학년 수준 🎓</div>
+  <div class="mode-grid">
+    <button class="mode-btn mb-add" onclick="startMode('add')">
+      <span class="mode-icon">➕</span>
+      <span class="mode-name">Addition</span>
+      <span class="mode-desc">덧셈 (two & three digit)</span>
+    </button>
+    <button class="mode-btn mb-sub" onclick="startMode('sub')">
+      <span class="mode-icon">➖</span>
+      <span class="mode-name">Subtraction</span>
+      <span class="mode-desc">뺄셈 (two & three digit)</span>
+    </button>
+    <button class="mode-btn mb-mul" onclick="startMode('mul')">
+      <span class="mode-icon">✖️</span>
+      <span class="mode-name">Multiplication</span>
+      <span class="mode-desc">곱셈 (1~9 × 1~9)</span>
+    </button>
+    <button class="mode-btn mb-div" onclick="startMode('div')">
+      <span class="mode-icon">➗</span>
+      <span class="mode-name">Division</span>
+      <span class="mode-desc">나눗셈 (no remainder)</span>
+    </button>
+    <button class="mode-btn mb-mix" onclick="startMode('mix')">
+      <span class="mode-icon">🎲</span>
+      <span class="mode-name">Mixed</span>
+      <span class="mode-desc">섞기 (all types!)</span>
+    </button>
+  </div>
+  <button class="bk" onclick="goHome()" style="margin:12px auto;display:block;">← Back</button>
 </div>
 
 <!-- GAME -->
@@ -146,7 +197,7 @@ body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:ra
     <div class="pill">⭐ <span id="sc">0</span>/10</div>
   </div>
   <div class="prob glass">
-    <div class="ptxt"><span class="a" id="pA">0</span><span class="x">×</span><span class="b" id="pB">0</span><span class="e">=</span><span class="r" id="pR">?</span></div>
+    <div class="ptxt"><span class="a" id="pA">0</span><span class="x" id="pOp">×</span><span class="b" id="pB">0</span><span class="e">=</span><span class="r" id="pR">?</span></div>
   </div>
   <div class="pad">
     <button class="nb" onclick="inp('1')">1</button><button class="nb" onclick="inp('2')">2</button><button class="nb" onclick="inp('3')">3</button>
@@ -165,7 +216,7 @@ body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:ra
     <div class="stage glass"><div class="stage-l">My Princess</div><div class="princess-wrap" id="rwAva"></div></div>
     <div class="inv glass" id="rwInv"></div>
   </div>
-  <div class="rw-btns"><button class="rb rb-p" onclick="startGame()">🎮 Play Again</button><button class="rb rb-h" onclick="goHome()">🏠 Home</button></div>
+  <div class="rw-btns"><button class="rb rb-p" onclick="showModes()">🎮 Play Again</button><button class="rb rb-h" onclick="goHome()">🏠 Home</button></div>
 </div>
 
 <!-- CLOSET -->
@@ -176,7 +227,7 @@ body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:ra
     <div class="stage glass"><div class="stage-l">My Princess</div><div class="princess-wrap" id="clAva"></div></div>
     <div class="inv glass" id="clInv"></div>
   </div>
-  <div class="rw-btns"><button class="rb rb-p" onclick="startGame()">🎮 Play</button><button class="rb rb-h" onclick="goHome()">🏠 Home</button></div>
+  <div class="rw-btns"><button class="rb rb-p" onclick="showModes()">🎮 Play</button><button class="rb rb-h" onclick="goHome()">🏠 Home</button></div>
 </div>
 </div>
 
@@ -687,14 +738,63 @@ function renderP(containerId){
 }
 
 // ========== GAME ==========
+let gameMode='mul'; // add, sub, mul, div, mix
+let curOp='×';
+function showModes(){sfx.click();show('modeScr');}
+function startMode(mode){gameMode=mode;startGame();}
 function startGame(){sfx.i();cQ=0;score=0;cAns='';newUL=[];show('gameScr');buildDots();updSc();next();}
 function buildDots(){const c=document.getElementById('dots');c.innerHTML='';for(let i=0;i<TOT;i++){const d=document.createElement('div');d.className='dot'+(i===0?' now':'');d.textContent=i+1;d.id='dt'+i;c.appendChild(d);}}
-function next(){n1=1+Math.floor(Math.random()*9);n2=1+Math.floor(Math.random()*9);corr=n1*n2;cAns='';document.getElementById('pA').textContent=n1;document.getElementById('pB').textContent=n2;document.getElementById('pR').textContent='?';document.getElementById('pR').classList.remove('has');for(let i=0;i<TOT;i++)document.getElementById('dt'+i).classList.toggle('now',i===cQ);const p=document.querySelector('.prob');p.style.animation='none';p.offsetHeight;p.style.animation='su .3s ease-out';}
-function inp(n){sfx.click();if(cAns.length>=3)return;cAns+=n;document.getElementById('pR').textContent=cAns;document.getElementById('pR').classList.add('has');}
+
+function genProblem(){
+  let mode=gameMode;
+  if(mode==='mix') mode=['add','sub','mul','div'][~~(Math.random()*4)];
+  
+  if(mode==='add'){
+    // Grade 3: two-digit + two-digit, some three-digit
+    if(Math.random()<0.3){
+      n1=100+~~(Math.random()*400); n2=10+~~(Math.random()*90);
+    } else {
+      n1=10+~~(Math.random()*90); n2=10+~~(Math.random()*90);
+    }
+    corr=n1+n2; curOp='+';
+  } else if(mode==='sub'){
+    // Grade 3: ensure positive result, two & three digit
+    if(Math.random()<0.3){
+      n1=100+~~(Math.random()*400); n2=10+~~(Math.random()*Math.min(n1-1,200));
+    } else {
+      n1=20+~~(Math.random()*80); n2=1+~~(Math.random()*(n1-1));
+    }
+    corr=n1-n2; curOp='−';
+  } else if(mode==='mul'){
+    // Grade 3: single digit × single digit (구구단)
+    n1=2+~~(Math.random()*8); n2=1+~~(Math.random()*9);
+    corr=n1*n2; curOp='×';
+  } else if(mode==='div'){
+    // Grade 3: clean division, no remainder
+    const divisor=2+~~(Math.random()*8);
+    const quotient=1+~~(Math.random()*9);
+    n1=divisor*quotient; n2=divisor;
+    corr=quotient; curOp='÷';
+  }
+}
+
+function next(){
+  genProblem();
+  cAns='';
+  document.getElementById('pA').textContent=n1;
+  document.getElementById('pOp').textContent=curOp;
+  document.getElementById('pB').textContent=n2;
+  document.getElementById('pR').textContent='?';
+  document.getElementById('pR').classList.remove('has');
+  for(let i=0;i<TOT;i++)document.getElementById('dt'+i).classList.toggle('now',i===cQ);
+  const p=document.querySelector('.prob');p.style.animation='none';p.offsetHeight;p.style.animation='su .3s ease-out';
+}
+
+function inp(n){sfx.click();if(cAns.length>=4)return;cAns+=n;document.getElementById('pR').textContent=cAns;document.getElementById('pR').classList.add('has');}
 function del(){sfx.click();cAns=cAns.slice(0,-1);document.getElementById('pR').textContent=cAns||'?';if(!cAns)document.getElementById('pR').classList.remove('has');}
 function submit(){if(!cAns)return;const ok=parseInt(cAns)===corr;const d=document.getElementById('dt'+cQ);if(ok){score++;d.classList.add('ok');sfx.ok();showFB(true);}else{d.classList.add('no');sfx.no();showFB(false);}d.classList.remove('now');updSc();cQ++;if(cQ>=TOT)setTimeout(()=>endGame(),1300);else setTimeout(()=>next(),1300);}
 function updSc(){document.getElementById('sc').textContent=score;}
-function showFB(ok){const o=document.getElementById('fbov'),e=document.getElementById('fbe'),t=document.getElementById('fbt'),a=document.getElementById('fba');if(ok){e.textContent=['🎉','🌟','💖','✨','👏','💫'][~~(Math.random()*6)];t.textContent=['Correct!','Great Job!','Amazing!','Perfect!','Awesome!','Wonderful!'][~~(Math.random()*6)];t.className='fbt cg';a.textContent='';}else{e.textContent=['😊','💪','🤗'][~~(Math.random()*3)];t.textContent='Not quite!';t.className='fbt wg';a.textContent=`Answer: ${n1} × ${n2} = ${corr}`;}o.classList.add('on');setTimeout(()=>o.classList.remove('on'),1100);}
+function showFB(ok){const o=document.getElementById('fbov'),e=document.getElementById('fbe'),t=document.getElementById('fbt'),a=document.getElementById('fba');if(ok){e.textContent=['🎉','🌟','💖','✨','👏','💫'][~~(Math.random()*6)];t.textContent=['Correct!','Great Job!','Amazing!','Perfect!','Awesome!','Wonderful!'][~~(Math.random()*6)];t.className='fbt cg';a.textContent='';}else{e.textContent=['😊','💪','🤗'][~~(Math.random()*3)];t.textContent='Not quite!';t.className='fbt wg';a.textContent=`Answer: ${n1} ${curOp} ${n2} = ${corr}`;}o.classList.add('on');setTimeout(()=>o.classList.remove('on'),1100);}
 function endGame(){S.tg++;if(score===TOT)S.pg++;const locked=ALL.filter(i=>!S.ul.includes(i.id));newUL=[];for(let i=0;i<score&&locked.length>0;i++){const idx=~~(Math.random()*locked.length);const it=locked.splice(idx,1)[0];S.ul.push(it.id);newUL.push(it);}save();document.getElementById('rwT').textContent=score>=8?'🎉 Amazing!':score>=5?'✨ Great Job!':'💪 Keep Trying!';document.getElementById('rwS').textContent=newUL.length>0?`🎁 You earned ${newUL.length} new item${newUL.length>1?'s':''}!`:'Earn items by answering correctly!';document.getElementById('rwB').textContent=`⭐ ${score} / ${TOT} Correct`;show('rewardScr');renderP('rwAva');renderInv('rwInv');if(score>=5)spawnConf();sfx.win();}
 
 // ========== INVENTORY ==========
