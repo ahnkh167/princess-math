@@ -89,7 +89,7 @@ body{font-family:'Quicksand',sans-serif;background:var(--bg);background-image:ra
 }
 .princess-wrap svg{display:block;width:100%;height:100%;}
 
-.inv{padding:14px;max-height:520px;overflow-y:auto;}
+.inv{padding:14px;max-height:620px;overflow-y:auto;}
 .inv::-webkit-scrollbar{width:5px;}.inv::-webkit-scrollbar-thumb{background:var(--p3);border-radius:3px;}
 .cat{margin-bottom:10px;}
 .cat-h{font-weight:700;font-size:.85rem;color:var(--p6);display:flex;align-items:center;gap:5px;margin-bottom:6px;padding-bottom:3px;border-bottom:1.5px solid var(--p2);}
@@ -319,6 +319,57 @@ const HAIRS={
     bangs:(c,h)=>`<path d="M80 62 Q92 42 120 38 Q148 42 160 62" fill="${c}"/>
       <path d="M88 56 Q100 44 118 40" stroke="${h}" stroke-width="2" fill="none" opacity=".3" stroke-linecap="round"/>`,
   },
+  hr7:{name:'Side Swept',color:'#2C1810',hi:'#5A3825',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="56" ry="54" fill="${c}"/>
+      <path d="M62 75 Q48 140 58 230 Q62 260 68 275" stroke="${c}" stroke-width="26" fill="none" stroke-linecap="round" opacity=".9"/>
+      <path d="M178 75 Q186 110 182 140" stroke="${c}" stroke-width="18" fill="none" stroke-linecap="round"/>`,
+    bangs:(c,h)=>`<path d="M72 58 Q85 32 120 30 Q155 32 165 52 L160 68 Q140 45 100 48 Q80 52 72 58Z" fill="${c}"/>
+      <path d="M78 52 Q95 38 115 34" stroke="${h}" stroke-width="2.5" fill="none" opacity=".35" stroke-linecap="round"/>`,
+  },
+  hr8:{name:'Pixie Cut',color:'#4A2728',hi:'#7A4A4B',
+    back:(c,h)=>`<ellipse cx="120" cy="70" rx="52" ry="50" fill="${c}"/>`,
+    bangs:(c,h)=>`<path d="M74 62 Q82 34 105 28 Q120 25 140 30 Q160 38 166 58 Q155 48 135 50 Q110 52 90 58Z" fill="${c}"/>
+      <path d="M85 52 Q100 38 118 34" stroke="${h}" stroke-width="2" fill="none" opacity=".3" stroke-linecap="round"/>`,
+  },
+  hr9:{name:'Wavy Lob',color:'#A0522D',hi:'#CD853F',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="55" ry="53" fill="${c}"/>
+      <path d="M66 80 Q54 120 58 160 Q55 175 62 185" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M174 80 Q186 120 182 160 Q185 175 178 185" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>`,
+    bangs:(c,h)=>`<path d="M76 62 Q88 36 120 32 Q152 36 164 62" fill="${c}"/>
+      <path d="M82 56 Q96 40 115 36" stroke="${h}" stroke-width="2.5" fill="none" opacity=".35" stroke-linecap="round"/>`,
+  },
+  hr10:{name:'Space Buns',color:'#E91E63',hi:'#F48FB1',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="52" ry="50" fill="${c}"/>
+      <circle cx="78" cy="42" r="18" fill="${c}"/><circle cx="162" cy="42" r="18" fill="${c}"/>
+      <circle cx="78" cy="42" r="12" fill="${h}" opacity=".12"/><circle cx="162" cy="42" r="12" fill="${h}" opacity=".12"/>`,
+    bangs:(c,h)=>`<path d="M80 62 Q92 42 120 38 Q148 42 160 62" fill="${c}"/>`,
+  },
+  hr11:{name:'Fishtail',color:'#8B6914',hi:'#C9A84C',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="56" ry="54" fill="${c}"/>
+      <path d="M120 95 Q118 140 115 190 Q112 240 108 280 Q105 300 100 315" stroke="${c}" stroke-width="18" fill="none" stroke-linecap="round"/>
+      <path d="M112 200 Q108 210 115 220 Q108 230 112 240" stroke="${h}" stroke-width="2" fill="none" opacity=".25"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q90 38 120 34 Q150 38 162 62" fill="${c}"/>`,
+  },
+  hr12:{name:'Half Up',color:'#654321',hi:'#8B7355',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="56" ry="54" fill="${c}"/>
+      <path d="M66 78 Q52 130 56 200 Q58 250 64 280" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M174 78 Q188 130 184 200 Q182 250 176 280" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <circle cx="120" cy="50" r="14" fill="${c}"/><circle cx="120" cy="50" r="9" fill="${h}" opacity=".12"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q90 38 120 34 Q150 38 162 62" fill="${c}"/>`,
+  },
+  hr13:{name:'Afro Puff',color:'#3B2F2F',hi:'#5C4A4A',
+    back:(c,h)=>`<ellipse cx="120" cy="62" rx="62" ry="58" fill="${c}"/>
+      <ellipse cx="120" cy="62" rx="55" ry="52" fill="${h}" opacity=".08"/>`,
+    bangs:(c,h)=>`<path d="M70 68 Q80 42 120 36 Q160 42 170 68" fill="${c}"/>`,
+  },
+  hr14:{name:'Long Straight',color:'#1B1B1B',hi:'#3A3A3A',
+    back:(c,h)=>`<ellipse cx="120" cy="72" rx="56" ry="54" fill="${c}"/>
+      <path d="M64 78 Q60 150 58 240 Q57 280 56 310" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M176 78 Q180 150 182 240 Q183 280 184 310" stroke="${c}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M78 50 Q82 120 80 180" stroke="${h}" stroke-width="2" fill="none" opacity=".2" stroke-linecap="round"/>`,
+    bangs:(c,h)=>`<path d="M78 62 Q88 38 120 34 Q152 38 162 62" fill="${c}"/>
+      <path d="M84 56 Q96 40 112 36" stroke="${h}" stroke-width="2" fill="none" opacity=".3" stroke-linecap="round"/>`,
+  },
 };
 
 // ========== DRESS STYLES ==========
@@ -353,6 +404,52 @@ const DRESSES={
       <path d="M82 260 Q120 268 158 260" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".3"/>`,
     sleeves:(c)=>`<ellipse cx="82" cy="148" rx="14" ry="12" fill="${c[0]}" opacity=".9"/><ellipse cx="158" cy="148" rx="14" ry="12" fill="${c[0]}" opacity=".9"/>`,
   },
+  dr3:{name:'A-Line',
+    bodice:(c)=>`<path d="M88 138 Q90 132 108 128 Q120 126 132 128 Q150 132 152 138 L156 178 Q120 184 84 178 Z" fill="${c[0]}"/>
+      <path d="M92 138 Q120 124 148 138" stroke="${c[2]}" stroke-width="1.5" fill="none" opacity=".35"/>
+      <circle cx="120" cy="152" r="3.5" fill="${c[3]}" opacity=".6"/>`,
+    skirt:(c)=>`<path d="M84 178 Q80 200 58 300 Q48 340 40 370 L200 370 Q192 340 182 300 Q160 200 156 178 Q120 184 84 178Z" fill="${c[1]}"/>
+      <path d="M65 240 Q120 252 175 240" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".2"/>
+      <path d="M50 310 Q120 325 190 310" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".15"/>`,
+    sleeves:(c)=>`<ellipse cx="80" cy="150" rx="15" ry="13" fill="${c[0]}" opacity=".9"/><ellipse cx="160" cy="150" rx="15" ry="13" fill="${c[0]}" opacity=".9"/>`,
+  },
+  dr4:{name:'Empire',
+    bodice:(c)=>`<path d="M90 138 Q92 132 108 126 Q120 124 132 126 Q148 132 150 138 L152 162 Q120 168 88 162 Z" fill="${c[0]}"/>
+      <path d="M88 162 Q120 168 152 162" stroke="${c[3]}" stroke-width="2.5" fill="none" opacity=".5"/>`,
+    skirt:(c)=>`<path d="M88 162 Q82 195 56 290 Q42 340 30 375 L210 375 Q198 340 184 290 Q158 195 152 162 Q120 168 88 162Z" fill="${c[1]}"/>
+      <path d="M72 220 Q120 232 168 220" stroke="${c[0]}" stroke-width="1" fill="none" opacity=".2"/>`,
+    sleeves:(c)=>`<path d="M82 140 Q72 145 68 158 Q72 165 82 162" fill="${c[0]}" opacity=".8"/>
+      <path d="M158 140 Q168 145 172 158 Q168 165 158 162" fill="${c[0]}" opacity=".8"/>`,
+  },
+  dr5:{name:'Tutu',
+    bodice:(c)=>`<path d="M90 138 Q92 132 108 128 Q120 126 132 128 Q148 132 150 138 L154 176 Q120 182 86 176 Z" fill="${c[0]}"/>
+      <path d="M94 138 Q120 124 146 138" stroke="${c[2]}" stroke-width="1.5" fill="none" opacity=".35"/>`,
+    skirt:(c)=>`<path d="M86 176 Q82 185 55 245 Q45 268 40 280 L200 280 Q195 268 185 245 Q158 185 154 176 Q120 182 86 176Z" fill="${c[1]}"/>
+      <path d="M55 245 Q120 258 185 245" stroke="${c[0]}" stroke-width="1" fill="none" opacity=".25"/>
+      <path d="M86 178 Q78 186 58 248" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".15"/>
+      <path d="M154 178 Q162 186 182 248" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".15"/>
+      <path d="M108 180 Q95 200 72 258" stroke="${c[0]}" stroke-width="1" fill="none" opacity=".1"/>
+      <path d="M132 180 Q145 200 168 258" stroke="${c[0]}" stroke-width="1" fill="none" opacity=".1"/>`,
+    sleeves:(c)=>`<ellipse cx="82" cy="148" rx="14" ry="12" fill="${c[0]}" opacity=".85"/><ellipse cx="158" cy="148" rx="14" ry="12" fill="${c[0]}" opacity=".85"/>`,
+  },
+  dr6:{name:'Off Shoulder',
+    bodice:(c)=>`<path d="M85 142 Q88 136 108 132 Q120 130 132 132 Q152 136 155 142 L158 178 Q120 184 82 178 Z" fill="${c[0]}"/>
+      <path d="M85 142 Q68 138 58 142" stroke="${c[0]}" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>
+      <path d="M155 142 Q172 138 182 142" stroke="${c[0]}" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>
+      <circle cx="120" cy="155" r="3" fill="${c[3]}" opacity=".6"/>`,
+    skirt:(c)=>`<path d="M82 178 Q78 192 52 285 Q38 335 26 370 L214 370 Q202 335 188 285 Q162 192 158 178 Q120 184 82 178Z" fill="${c[1]}"/>
+      <path d="M66 230 Q120 244 174 230" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".25"/>`,
+    sleeves:(c)=>'',
+  },
+  dr7:{name:'Hanbok',
+    bodice:(c)=>`<path d="M86 138 Q90 130 108 126 Q120 124 132 126 Q150 130 154 138 L152 168 Q120 172 88 168 Z" fill="${c[0]}"/>
+      <path d="M88 168 Q120 172 152 168" stroke="${c[3]}" stroke-width="3" fill="none" opacity=".6"/>
+      <path d="M116 140 L120 168" stroke="${c[3]}" stroke-width="1.5" fill="none" opacity=".4"/>`,
+    skirt:(c)=>`<path d="M88 168 Q72 200 38 300 Q22 350 10 380 L230 380 Q218 350 202 300 Q168 200 152 168 Q120 172 88 168Z" fill="${c[1]}"/>
+      <path d="M55 230 Q120 248 185 230" stroke="${c[0]}" stroke-width="1.5" fill="none" opacity=".15"/>`,
+    sleeves:(c)=>`<path d="M78 142 Q60 148 52 160 Q58 168 78 162" fill="${c[0]}" opacity=".85"/>
+      <path d="M162 142 Q180 148 188 160 Q182 168 162 162" fill="${c[0]}" opacity=".85"/>`,
+  },
 };
 const COLORS={
   default:{n:'Rose Pink',c:['#FFB8D4','#FF7EB3','#FF4D94','#FFD1E3']},
@@ -367,6 +464,19 @@ const COLORS={
   cl9:{n:'Magenta',c:['#FDA4AF','#F43F5E','#BE123C','#FFE4E6']},
   cl10:{n:'Aqua',c:['#A5F3FC','#22D3EE','#0891B2','#CFFAFE']},
   cl11:{n:'Peach',c:['#FECDD3','#FB7185','#E11D48','#FFE4E6']},
+  cl12:{n:'Lavender',c:['#DDD6FE','#8B5CF6','#6D28D9','#EDE9FE']},
+  cl13:{n:'Coral',c:['#FED7AA','#FB923C','#EA580C','#FFEDD5']},
+  cl14:{n:'Mint',c:['#A7F3D0','#34D399','#059669','#D1FAE5']},
+  cl15:{n:'Blush',c:['#FBCFE8','#EC4899','#BE185D','#FCE7F3']},
+  cl16:{n:'Sky',c:['#BAE6FD','#38BDF8','#0284C7','#E0F2FE']},
+  cl17:{n:'Champagne',c:['#FDE68A','#D4A017','#92400E','#FEFCE8']},
+  cl18:{n:'Berry',c:['#C4B5FD','#7C3AED','#5B21B6','#DDD6FE']},
+  cl19:{n:'Sage',c:['#BBF7D0','#4ADE80','#16A34A','#DCFCE7']},
+  cl20:{n:'Dusty Rose',c:['#F9A8D4','#DB2777','#9D174D','#FDF2F8']},
+  cl21:{n:'Teal',c:['#99F6E4','#14B8A6','#0F766E','#CCFBF1']},
+  cl22:{n:'Plum',c:['#E9D5FF','#9333EA','#6B21A8','#F3E8FF']},
+  cl23:{n:'Rose Gold',c:['#FECACA','#E8A87C','#B45309','#FEF3C7']},
+  cl24:{n:'Ice Blue',c:['#CFFAFE','#67E8F9','#0891B2','#ECFEFF']},
 };
 
 // ========== ACCESSORIES ==========
@@ -376,10 +486,17 @@ const DB={
     {id:'_h1',em:'🎀',lb:'Braided',val:'hr1'},{id:'_h2',em:'✂️',lb:'Short Bob',val:'hr2'},
     {id:'_h3',em:'🎗️',lb:'Ponytail',val:'hr3'},{id:'_h4',em:'👸',lb:'Curls',val:'hr4'},
     {id:'_h5',em:'🌸',lb:'Twin Tails',val:'hr5'},{id:'_h6',em:'💎',lb:'Bun Updo',val:'hr6'},
+    {id:'_h7',em:'🌊',lb:'Side Swept',val:'hr7'},{id:'_h8',em:'🍃',lb:'Pixie Cut',val:'hr8'},
+    {id:'_h9',em:'🌀',lb:'Wavy Lob',val:'hr9'},{id:'_h10',em:'🪐',lb:'Space Buns',val:'hr10'},
+    {id:'_h11',em:'🐟',lb:'Fishtail',val:'hr11'},{id:'_h12',em:'💕',lb:'Half Up',val:'hr12'},
+    {id:'_h13',em:'☁️',lb:'Afro Puff',val:'hr13'},{id:'_h14',em:'🖤',lb:'Long Straight',val:'hr14'},
   ]},
   dressStyle:{name:'👗 Dress Style',items:[
     {id:'_sd',em:'👗',lb:'Classic',val:'default'},
     {id:'_s1',em:'💃',lb:'Ball Gown',val:'dr1'},{id:'_s2',em:'🧜‍♀️',lb:'Mermaid',val:'dr2'},
+    {id:'_s3',em:'🌷',lb:'A-Line',val:'dr3'},{id:'_s4',em:'👑',lb:'Empire',val:'dr4'},
+    {id:'_s5',em:'🩰',lb:'Tutu',val:'dr5'},{id:'_s6',em:'✨',lb:'Off Shoulder',val:'dr6'},
+    {id:'_s7',em:'🎎',lb:'Hanbok',val:'dr7'},
   ]},
   dressColor:{name:'🎨 Dress Color',items:[
     {id:'_cd',em:'💗',lb:'Rose Pink',val:'default'},
@@ -388,35 +505,93 @@ const DB={
     {id:'_c5',em:'🤍',lb:'White',val:'cl5'},{id:'_c6',em:'💛',lb:'Golden',val:'cl6'},
     {id:'_c7',em:'🔵',lb:'Midnight',val:'cl7'},{id:'_c8',em:'🧡',lb:'Sunset',val:'cl8'},
     {id:'_c9',em:'💖',lb:'Magenta',val:'cl9'},{id:'_c10',em:'🩵',lb:'Aqua',val:'cl10'},
-    {id:'_c11',em:'🩷',lb:'Peach',val:'cl11'},
+    {id:'_c11',em:'🩷',lb:'Peach',val:'cl11'},{id:'_c12',em:'🪻',lb:'Lavender',val:'cl12'},
+    {id:'_c13',em:'🪸',lb:'Coral',val:'cl13'},{id:'_c14',em:'🌿',lb:'Mint',val:'cl14'},
+    {id:'_c15',em:'🌺',lb:'Blush',val:'cl15'},{id:'_c16',em:'🏖️',lb:'Sky',val:'cl16'},
+    {id:'_c17',em:'🥂',lb:'Champagne',val:'cl17'},{id:'_c18',em:'🫐',lb:'Berry',val:'cl18'},
+    {id:'_c19',em:'🌱',lb:'Sage',val:'cl19'},{id:'_c20',em:'🌹',lb:'Dusty Rose',val:'cl20'},
+    {id:'_c21',em:'🦚',lb:'Teal',val:'cl21'},{id:'_c22',em:'🍇',lb:'Plum',val:'cl22'},
+    {id:'_c23',em:'🪞',lb:'Rose Gold',val:'cl23'},{id:'_c24',em:'🧊',lb:'Ice Blue',val:'cl24'},
   ]},
-  tiara:{name:'👑 Tiara',items:[
-    {id:'t1',em:'👑',lb:'Gold Crown'},{id:'t2',em:'💎',lb:'Diamond'},{id:'t3',em:'🌸',lb:'Flower'},
-    {id:'t4',em:'⭐',lb:'Star'},{id:'t5',em:'🦋',lb:'Butterfly'},{id:'t6',em:'❄️',lb:'Ice'},
-    {id:'t7',em:'🌙',lb:'Moon'},{id:'t8',em:'☀️',lb:'Sun'},{id:'t9',em:'💗',lb:'Heart'},{id:'t10',em:'🎀',lb:'Ribbon'},
+  tiara:{name:'👑 Tiara & Crown',items:[
+    {id:'t1',em:'👑',lb:'Gold Crown'},{id:'t2',em:'💎',lb:'Diamond'},{id:'t3',em:'🌸',lb:'Flower Crown'},
+    {id:'t4',em:'⭐',lb:'Star Tiara'},{id:'t5',em:'🦋',lb:'Butterfly'},{id:'t6',em:'❄️',lb:'Ice Crystal'},
+    {id:'t7',em:'🌙',lb:'Moon Crown'},{id:'t8',em:'☀️',lb:'Sun Tiara'},{id:'t9',em:'💗',lb:'Heart Crown'},
+    {id:'t10',em:'🎀',lb:'Ribbon Bow'},{id:'t11',em:'🌈',lb:'Rainbow'},{id:'t12',em:'🔮',lb:'Crystal'},
+    {id:'t13',em:'🌺',lb:'Hibiscus'},{id:'t14',em:'🍀',lb:'Clover'},{id:'t15',em:'🪷',lb:'Lotus'},
+    {id:'t16',em:'✨',lb:'Sparkle'},{id:'t17',em:'🎭',lb:'Masquerade'},{id:'t18',em:'🌟',lb:'Shooting Star'},
+    {id:'t19',em:'👸',lb:'Princess'},{id:'t20',em:'💫',lb:'Cosmic'},
+    {id:'t21',em:'🎪',lb:'Carnival'},{id:'t22',em:'🏵️',lb:'Rosette'},{id:'t23',em:'💐',lb:'Bouquet'},
+    {id:'t24',em:'🧊',lb:'Frozen'},{id:'t25',em:'🎄',lb:'Holiday'},
   ]},
   necklace:{name:'📿 Necklace',items:[
-    {id:'n1',em:'📿',lb:'Pearl'},{id:'n2',em:'💎',lb:'Diamond'},{id:'n3',em:'💗',lb:'Heart'},
-    {id:'n4',em:'🌟',lb:'Star'},{id:'n5',em:'🌙',lb:'Moon'},{id:'n6',em:'🔮',lb:'Crystal'},
-    {id:'n7',em:'🦋',lb:'Butterfly'},{id:'n8',em:'🌸',lb:'Blossom'},{id:'n9',em:'❄️',lb:'Snow'},
+    {id:'n1',em:'📿',lb:'Pearl'},{id:'n2',em:'💎',lb:'Diamond'},{id:'n3',em:'💗',lb:'Heart Pendant'},
+    {id:'n4',em:'🌟',lb:'Star Chain'},{id:'n5',em:'🌙',lb:'Moon Locket'},{id:'n6',em:'🔮',lb:'Crystal Ball'},
+    {id:'n7',em:'🦋',lb:'Butterfly'},{id:'n8',em:'🌸',lb:'Blossom'},{id:'n9',em:'❄️',lb:'Snowflake'},
+    {id:'n10',em:'🐚',lb:'Seashell'},{id:'n11',em:'🗝️',lb:'Key Pendant'},{id:'n12',em:'🎵',lb:'Music Note'},
+    {id:'n13',em:'🍒',lb:'Cherry'},{id:'n14',em:'🌹',lb:'Rose'},{id:'n15',em:'💧',lb:'Teardrop'},
+    {id:'n16',em:'🪸',lb:'Coral'},{id:'n17',em:'🧿',lb:'Amulet'},{id:'n18',em:'✨',lb:'Sparkle Chain'},
+    {id:'n19',em:'🎀',lb:'Ribbon'},{id:'n20',em:'💜',lb:'Amethyst'},
+    {id:'n21',em:'🪶',lb:'Feather'},{id:'n22',em:'🎭',lb:'Mask Chain'},{id:'n23',em:'🌻',lb:'Sunflower'},
+    {id:'n24',em:'🪩',lb:'Disco Ball'},{id:'n25',em:'🎪',lb:'Carnival'},
   ]},
   earring:{name:'✨ Earrings',items:[
-    {id:'e1',em:'💎',lb:'Diamond'},{id:'e2',em:'⭐',lb:'Star'},{id:'e3',em:'🌙',lb:'Moon'},
-    {id:'e4',em:'💗',lb:'Heart'},{id:'e5',em:'🌸',lb:'Flower'},{id:'e6',em:'🍒',lb:'Cherry'},
-    {id:'e7',em:'🦋',lb:'Butterfly'},{id:'e8',em:'💧',lb:'Teardrop'},
+    {id:'e1',em:'💎',lb:'Diamond Stud'},{id:'e2',em:'⭐',lb:'Star Drop'},{id:'e3',em:'🌙',lb:'Crescent'},
+    {id:'e4',em:'💗',lb:'Heart Dangle'},{id:'e5',em:'🌸',lb:'Flower Stud'},{id:'e6',em:'🍒',lb:'Cherry'},
+    {id:'e7',em:'🦋',lb:'Butterfly'},{id:'e8',em:'💧',lb:'Teardrop'},{id:'e9',em:'📿',lb:'Pearl Drop'},
+    {id:'e10',em:'❄️',lb:'Snowflake'},{id:'e11',em:'🌟',lb:'Gold Star'},{id:'e12',em:'🔮',lb:'Crystal'},
+    {id:'e13',em:'🪻',lb:'Lavender'},{id:'e14',em:'🌈',lb:'Rainbow'},{id:'e15',em:'🐚',lb:'Shell'},
+    {id:'e16',em:'🎀',lb:'Ribbon Bow'},{id:'e17',em:'🌹',lb:'Rose'},{id:'e18',em:'✨',lb:'Sparkle'},
+    {id:'e19',em:'🩵',lb:'Aqua Gem'},{id:'e20',em:'🍀',lb:'Clover'},
+    {id:'e21',em:'💜',lb:'Amethyst'},{id:'e22',em:'🪸',lb:'Coral Hoop'},{id:'e23',em:'🌺',lb:'Hibiscus'},
+    {id:'e24',em:'💛',lb:'Gold Hoop'},{id:'e25',em:'🩷',lb:'Pink Gem'},{id:'e26',em:'🫧',lb:'Bubble'},
+    {id:'e27',em:'🪬',lb:'Charm'},{id:'e28',em:'🧊',lb:'Ice Drop'},{id:'e29',em:'🌻',lb:'Sunflower'},
+    {id:'e30',em:'🎵',lb:'Music Note'},{id:'e31',em:'🪩',lb:'Disco'},{id:'e32',em:'🏵️',lb:'Rosette'},{id:'e33',em:'💐',lb:'Bouquet'},{id:'e34',em:'🐠',lb:'Fish'},{id:'e35',em:'🪷',lb:'Lotus'},{id:'e36',em:'🌊',lb:'Wave'},{id:'e37',em:'⚡',lb:'Lightning'},{id:'e38',em:'🎪',lb:'Carnival'},{id:'e39',em:'🧸',lb:'Teddy'},{id:'e40',em:'🪻',lb:'Iris'},
   ]},
   shoes:{name:'👠 Shoes',items:[
     {id:'s1',em:'👠',lb:'Ruby Heels'},{id:'s2',em:'👡',lb:'Sandals'},{id:'s3',em:'🥿',lb:'Glass Slipper'},
-    {id:'s4',em:'👢',lb:'Boots'},{id:'s5',em:'🩰',lb:'Ballet'},{id:'s6',em:'✨',lb:'Magic'},
+    {id:'s4',em:'👢',lb:'Tall Boots'},{id:'s5',em:'🩰',lb:'Ballet Flats'},{id:'s6',em:'✨',lb:'Magic Shoes'},
+    {id:'s7',em:'👟',lb:'Sneakers'},{id:'s8',em:'🌸',lb:'Flower Shoes'},{id:'s9',em:'❄️',lb:'Ice Boots'},
+    {id:'s10',em:'💎',lb:'Crystal Heels'},{id:'s11',em:'🌈',lb:'Rainbow'},{id:'s12',em:'👑',lb:'Royal'},
+    {id:'s13',em:'🦋',lb:'Butterfly'},{id:'s14',em:'🌙',lb:'Moon Boots'},{id:'s15',em:'💗',lb:'Heart Shoes'},
+    {id:'s16',em:'🔮',lb:'Enchanted'},{id:'s17',em:'🌺',lb:'Tropical'},{id:'s18',em:'⭐',lb:'Star Shoes'},
+    {id:'s19',em:'🧊',lb:'Frozen'},{id:'s20',em:'🎀',lb:'Bow Shoes'},{id:'s21',em:'🫧',lb:'Bubble'},
+    {id:'s22',em:'🪸',lb:'Coral'},{id:'s23',em:'💜',lb:'Amethyst'},
   ]},
-  wand:{name:'🪄 Wand',items:[
-    {id:'w1',em:'🪄',lb:'Magic'},{id:'w2',em:'⭐',lb:'Star'},{id:'w3',em:'💗',lb:'Heart'},
-    {id:'w4',em:'🌸',lb:'Flower'},{id:'w5',em:'❄️',lb:'Ice'},{id:'w6',em:'🔮',lb:'Crystal'},
+  wand:{name:'🪄 Wand & Staff',items:[
+    {id:'w1',em:'🪄',lb:'Magic Wand'},{id:'w2',em:'⭐',lb:'Star Wand'},{id:'w3',em:'💗',lb:'Heart Wand'},
+    {id:'w4',em:'🌸',lb:'Flower Staff'},{id:'w5',em:'❄️',lb:'Ice Scepter'},{id:'w6',em:'🔮',lb:'Crystal Orb'},
+    {id:'w7',em:'🌙',lb:'Moon Staff'},{id:'w8',em:'☀️',lb:'Sun Wand'},{id:'w9',em:'🦋',lb:'Butterfly'},
+    {id:'w10',em:'🌈',lb:'Rainbow'},{id:'w11',em:'💎',lb:'Diamond'},{id:'w12',em:'🌟',lb:'Shooting Star'},
+    {id:'w13',em:'🪷',lb:'Lotus Staff'},{id:'w14',em:'✨',lb:'Sparkle'},{id:'w15',em:'👑',lb:'Royal'},
+    {id:'w16',em:'🍀',lb:'Lucky'},{id:'w17',em:'🪶',lb:'Feather'},{id:'w18',em:'🌻',lb:'Sunflower'},
+    {id:'w19',em:'🫧',lb:'Bubble'},{id:'w20',em:'🎪',lb:'Carnival'},
   ]},
   pet:{name:'🐾 Pet',items:[
     {id:'p1',em:'🐱',lb:'Kitten'},{id:'p2',em:'🐶',lb:'Puppy'},{id:'p3',em:'🐰',lb:'Bunny'},
     {id:'p4',em:'🦄',lb:'Unicorn'},{id:'p5',em:'🦋',lb:'Butterfly'},{id:'p6',em:'🐦',lb:'Bird'},
-    {id:'p7',em:'🦢',lb:'Swan'},{id:'p8',em:'🐣',lb:'Chick'},
+    {id:'p7',em:'🦢',lb:'Swan'},{id:'p8',em:'🐣',lb:'Chick'},{id:'p9',em:'🐼',lb:'Panda'},
+    {id:'p10',em:'🦊',lb:'Fox'},{id:'p11',em:'🐠',lb:'Fish'},{id:'p12',em:'🦜',lb:'Parrot'},
+    {id:'p13',em:'🐿️',lb:'Squirrel'},{id:'p14',em:'🦩',lb:'Flamingo'},{id:'p15',em:'🐨',lb:'Koala'},
+    {id:'p16',em:'🐢',lb:'Turtle'},{id:'p17',em:'🦔',lb:'Hedgehog'},{id:'p18',em:'🐝',lb:'Bee'},
+    {id:'p19',em:'🦭',lb:'Seal'},{id:'p20',em:'🐙',lb:'Octopus'},{id:'p21',em:'🦎',lb:'Gecko'},
+    {id:'p22',em:'🐬',lb:'Dolphin'},{id:'p23',em:'🦡',lb:'Badger'},{id:'p24',em:'🐈‍⬛',lb:'Black Cat'},{id:'p25',em:'🐴',lb:'Pony'},{id:'p26',em:'🦑',lb:'Squid'},{id:'p27',em:'🐧',lb:'Penguin'},{id:'p28',em:'🦕',lb:'Dino'},{id:'p29',em:'🐸',lb:'Frog'},{id:'p30',em:'🦦',lb:'Otter'},
+  ]},
+  bag:{name:'👜 Bag',items:[
+    {id:'bg1',em:'👜',lb:'Purse'},{id:'bg2',em:'🎒',lb:'Backpack'},{id:'bg3',em:'👝',lb:'Clutch'},
+    {id:'bg4',em:'🧳',lb:'Travel'},{id:'bg5',em:'💼',lb:'Royal Box'},{id:'bg6',em:'🎀',lb:'Ribbon Bag'},
+    {id:'bg7',em:'🌸',lb:'Flower'},{id:'bg8',em:'💗',lb:'Heart Bag'},{id:'bg9',em:'⭐',lb:'Star Bag'},
+    {id:'bg10',em:'🦋',lb:'Butterfly'},{id:'bg11',em:'🐚',lb:'Shell Bag'},{id:'bg12',em:'✨',lb:'Sparkle'},
+    {id:'bg13',em:'🌙',lb:'Moon Bag'},{id:'bg14',em:'❄️',lb:'Snow'},{id:'bg15',em:'🔮',lb:'Crystal'},
+    {id:'bg16',em:'🌹',lb:'Rose'},{id:'bg17',em:'🎀',lb:'Gift Box'},{id:'bg18',em:'🧁',lb:'Cupcake'},{id:'bg19',em:'🎐',lb:'Wind Chime'},{id:'bg20',em:'🪺',lb:'Nest'},
+  ]},
+  wings:{name:'🧚 Wings',items:[
+    {id:'wg1',em:'🧚',lb:'Fairy Wings'},{id:'wg2',em:'🦋',lb:'Butterfly'},{id:'wg3',em:'👼',lb:'Angel'},
+    {id:'wg4',em:'🌸',lb:'Petal Wings'},{id:'wg5',em:'❄️',lb:'Ice Wings'},{id:'wg6',em:'🌈',lb:'Rainbow'},
+    {id:'wg7',em:'✨',lb:'Sparkle'},{id:'wg8',em:'💗',lb:'Heart Wings'},{id:'wg9',em:'🔮',lb:'Crystal'},
+    {id:'wg10',em:'🌙',lb:'Moon Wings'},{id:'wg11',em:'☀️',lb:'Sun Wings'},{id:'wg12',em:'💎',lb:'Diamond'},
+    {id:'wg13',em:'🌺',lb:'Hibiscus'},{id:'wg14',em:'🍀',lb:'Clover'},{id:'wg15',em:'🫧',lb:'Bubble'},
+    {id:'wg16',em:'🪶',lb:'Feather'},{id:'wg17',em:'🐲',lb:'Dragon'},{id:'wg18',em:'🦅',lb:'Eagle'},{id:'wg19',em:'🪽',lb:'Dove'},{id:'wg20',em:'⚡',lb:'Thunder'},
   ]},
 };
 const ALL=[];Object.keys(DB).forEach(c=>DB[c].items.forEach(i=>ALL.push({...i,cat:c})));
@@ -498,13 +673,15 @@ function renderP(containerId){
 
   // Emoji overlays
   let ov='';
-  const tiaraY=hairKey==='hr6'?-8:2;
+  const tiaraY=hairKey==='hr6'?-8:(hairKey==='hr10'?-6:2);
   if(eq.tiara){const it=fi(eq.tiara);if(it)ov+=`<div class="acc-ov" style="top:${tiaraY}px;left:50%;transform:translateX(-50%);font-size:2.2rem;filter:drop-shadow(0 2px 6px rgba(245,166,35,.3));">${it.em}</div>`;}
-  if(eq.earring){const it=fi(eq.earring);if(it){ov+=`<div class="acc-ov" style="top:82px;left:28px;font-size:.9rem;">${it.em}</div>`;ov+=`<div class="acc-ov" style="top:82px;right:28px;font-size:.9rem;">${it.em}</div>`;}}
+  if(eq.earring){const it=fi(eq.earring);if(it){ov+=`<div class="acc-ov" style="top:74px;left:20px;font-size:1rem;filter:drop-shadow(0 1px 2px rgba(0,0,0,.15));">${it.em}</div>`;ov+=`<div class="acc-ov" style="top:74px;right:20px;font-size:1rem;filter:drop-shadow(0 1px 2px rgba(0,0,0,.15));">${it.em}</div>`;}}
   if(eq.necklace){const it=fi(eq.necklace);if(it)ov+=`<div class="acc-ov" style="top:125px;left:50%;transform:translateX(-50%);font-size:1.2rem;">${it.em}</div>`;}
   if(eq.shoes){const it=fi(eq.shoes);if(it)ov+=`<div class="acc-ov" style="bottom:4px;left:50%;transform:translateX(-50%);font-size:1.3rem;">${it.em}</div>`;}
   if(eq.wand){const it=fi(eq.wand);if(it)ov+=`<div class="acc-ov" style="top:168px;left:-2px;font-size:1.5rem;transform:rotate(-25deg);">${it.em}</div>`;}
   if(eq.pet){const it=fi(eq.pet);if(it)ov+=`<div class="acc-ov" style="bottom:18px;right:-6px;font-size:1.8rem;animation:bob 2s ease-in-out infinite;">${it.em}</div>`;}
+  if(eq.bag){const it=fi(eq.bag);if(it)ov+=`<div class="acc-ov" style="top:180px;right:-4px;font-size:1.4rem;">${it.em}</div>`;}
+  if(eq.wings){const it=fi(eq.wings);if(it)ov+=`<div class="acc-ov" style="top:100px;left:50%;transform:translateX(-50%);font-size:2.8rem;opacity:.45;z-index:-1;">${it.em}</div>`;}
 
   el.innerHTML=svg+ov;
 }
